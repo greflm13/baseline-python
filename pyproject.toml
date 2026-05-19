@@ -19,7 +19,7 @@
         baseline = "main:main"
 
 [dependency-groups]
-    dev = ["pyinstaller", "ruff"]
+    dev = ["pyinstaller", "ruff", "deptry"]
 
 [tool.setuptools.packages.find]
     where = ["src"]

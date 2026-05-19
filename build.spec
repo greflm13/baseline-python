@@ -1,16 +1,18 @@
 import os
 import platform
+import tomllib
 
 from PyInstaller.building.api import EXE, PYZ
 from PyInstaller.building.build_main import Analysis
 from PyInstaller.utils.hooks import collect_submodules
 
-app_name = os.environ.get("APP_NAME", "recode")
+with open("pyproject.toml", "rb") as f:
+    app_name = tomllib.load(f)["project"]["name"]
 build_os = os.environ.get("BUILD_OS", platform.system().lower())
 build_arch = os.environ.get("BUILD_ARCH", platform.machine())
 
 name = f"{app_name}-{build_os}-{build_arch}"
-datas = [("src/languages.json", ".")]
+datas = []
 hiddenimports = collect_submodules("modules")
 
 a = Analysis(
