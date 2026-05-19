@@ -1,0 +1,40 @@
+[build-system]
+    build-backend = "setuptools.build_meta"
+    requires      = ["setuptools>=61", "wheel"]
+
+[project]
+    description     = "Baseline Python Project"
+    name            = "baseline-python"
+    readme          = "README.md"
+    requires-python = ">=3.12"
+    version         = "0.0.1"
+
+    license = "AGPL-3.0-or-later"
+
+    authors = [{ name = "Flo Greistorfer" }]
+
+    dependencies = []
+
+    [project.scripts]
+        baseline = "main:main"
+
+[dependency-groups]
+    dev = ["pyinstaller", "ruff"]
+
+[tool.setuptools.packages.find]
+    where = ["src"]
+
+[tool.setuptools.package-data]
+    baseline = []
+
+[tool.ruff]
+    line-length    = 140
+    target-version = "py312"
+
+    [tool.ruff.lint]
+        ignore = ["E501"]
+        select = ["B", "E", "F", "I", "UP"]
+
+    [tool.ruff.format]
+        indent-style = "space"
+        quote-style  = "double"
