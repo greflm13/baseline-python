@@ -21,6 +21,8 @@ run(["rm", "-rf", os.path.join(name, ".git")])
 os.remove(os.path.join(name, "install.sh"))
 os.remove(os.path.join(name, "new.py"))
 
+os.rename(os.path.join(name, "baseline-python.code-workspace"), os.path.join(name, f"{name}.code-workspace"))
+
 path = os.path.join(name, "pyproject.toml")
 with open(path, encoding="utf-8") as f:
     pyproject = tomlkit.loads(f.read())
