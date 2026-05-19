@@ -18,6 +18,8 @@ finally:
 
 run(["git", "clone", "https://github.com/greflm13/baseline-python", name])
 run(["rm", "-rf", os.path.join(name, ".git")])
+os.remove(os.path.join(name, "install.sh"))
+os.remove(os.path.join(name, "new.py"))
 
 path = os.path.join(name, "pyproject.toml")
 with open(path, encoding="utf-8") as f:

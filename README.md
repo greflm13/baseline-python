@@ -3,5 +3,5 @@
 ## Usage
 
 ```bash
-curl usw
+curl -s https://raw.githubusercontent.com/greflm13/baseline-python/main/install.sh | bash
 ```
