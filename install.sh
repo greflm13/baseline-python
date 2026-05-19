@@ -4,6 +4,9 @@ set -e
 tmp=$(mktemp)
 curl -s https://raw.githubusercontent.com/greflm13/baseline-python/main/new.py -o "$tmp"
 
-python3 "$tmp" </dev/tty
+exec 3</dev/tty
+exec 4>/dev/tty
+
+python3 "$tmp" <&3 >&4 2>&4
 
 rm "$tmp"
