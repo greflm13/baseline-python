@@ -9,6 +9,9 @@ clean:
 rebuild: clean build
 
 install:
+	pip install .
+
+dev:
 	pip install -e . --group dev
 
 lint:
