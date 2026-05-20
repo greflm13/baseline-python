@@ -22,7 +22,7 @@ os.remove(os.path.join(name, "install.sh"))
 os.remove(os.path.join(name, "new.py"))
 
 os.rename(os.path.join(name, "baseline-python.code-workspace"), os.path.join(name, f"{name}.code-workspace"))
-os.rename(os.path.join(name, "src", "baseline"), os.path.join(name, "src", name))
+os.rename(os.path.join(name, "src", "baseline"), os.path.join(name, "src", name.replace("-", "_")))
 
 path = os.path.join(name, "pyproject.toml")
 with open(path, encoding="utf-8") as f:
@@ -36,7 +36,7 @@ authors = tomlkit.inline_table()
 authors.add("name", author)
 pyproject["project"]["authors"].append(authors)
 pyproject["project"]["scripts"] = tomlkit.table()
-pyproject["project"]["scripts"].add(name, f"{name}.main:main")
+pyproject["project"]["scripts"].add(name, f"{name.replace('-', '_')}.main:main")
 pyproject["tool"]["setuptools"]["package-data"] = tomlkit.table()
 pyproject["tool"]["setuptools"]["package-data"].add(name, tomlkit.array())
 pyproject["tool"]["ruff"]["target-version"] = f"py{python_version.replace('.', '')}"
