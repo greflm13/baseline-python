@@ -16,7 +16,7 @@ datas = []
 hiddenimports = collect_submodules("modules")
 
 a = Analysis(
-    ["src/main.py"],
+    ["src/baseline/main.py"],
     pathex=[],
     binaries=[],
     datas=datas,

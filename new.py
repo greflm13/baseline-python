@@ -44,6 +44,12 @@ pyproject["tool"]["ruff"]["target-version"] = f"py{python_version.replace('.', '
 with open(path, "w", encoding="utf-8") as f:
     f.write(tomlkit.dumps(pyproject))
 
+with open(os.path.join(name, "build.spec"), encoding="utf-8") as f:
+    buildspec = f.read()
+
+with open(os.path.join(name, "build.spec"), "w", encoding="utf-8") as f:
+    f.write(buildspec.replace("src/baseline/main.py", f"src/{name}/main.py"))
+
 if setup_virtualenv:
     run(["pyenv", "install", python_version])
     run(["pyenv", "virtualenv", python_version, name])
