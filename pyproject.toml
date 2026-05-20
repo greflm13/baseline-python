@@ -16,7 +16,7 @@
     dependencies = []
 
     [project.scripts]
-        baseline = "main:main"
+        baseline = "baseline.main:main"
 
 [dependency-groups]
     dev = ["pyinstaller", "ruff", "deptry"]
