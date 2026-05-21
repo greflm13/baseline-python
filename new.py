@@ -66,6 +66,10 @@ workspace["launch"]["configurations"][0]["program"] = f"${{workspaceFolder}}/src
 with open(os.path.join(name, f"{name}.code-workspace"), "w", encoding="utf-8") as f:
     f.write(json.dumps(workspace, indent=4))
 
+with open(os.path.join(name, "README.md"), "w", encoding="utf-8") as f:
+    f.write(f"# {name}\n")
+    f.write(description)
+
 if setup_virtualenv:
     run(["pyenv", "install", python_version])
     run(["pyenv", "virtualenv", python_version, name])
