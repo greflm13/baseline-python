@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import json
 import os
 import readline
 from subprocess import run
@@ -51,10 +52,13 @@ with open(os.path.join(name, "build.spec"), "w", encoding="utf-8") as f:
     f.write(buildspec.replace("src/baseline/main.py", f"src/{name}/main.py"))
 
 with open(os.path.join(name, f"{name}.code-workspace"), encoding="utf-8") as f:
-    buildspec = f.read()
+    workspace = json.loads(f.read())
+
+workspace["launch"]["configurations"][0]["name"] = f"Debug {name}"
+workspace["launch"]["configurations"][0]["program"] = f"${{workspaceFolder}}/src/{name.replace('-', '_')}/main.py"
 
 with open(os.path.join(name, f"{name}.code-workspace"), "w", encoding="utf-8") as f:
-    f.write(buildspec.replace("baseline", f"{name}"))
+    f.write(json.dumps(workspace, indent=4))
 
 if setup_virtualenv:
     run(["pyenv", "install", python_version])

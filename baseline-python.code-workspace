@@ -33,8 +33,9 @@
                 "name": "Debug baseline",
                 "type": "debugpy",
                 "request": "launch",
-                "program": "python -m baseline.main",
+                "program": "${workspaceFolder}/src/baseline/main.py",
                 "console": "integratedTerminal",
+                "args": []
             }
         ]
     }
