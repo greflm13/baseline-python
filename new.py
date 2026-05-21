@@ -67,8 +67,8 @@ with open(os.path.join(name, f"{name}.code-workspace"), "w", encoding="utf-8") a
     f.write(json.dumps(workspace, indent=4))
 
 with open(os.path.join(name, "README.md"), "w", encoding="utf-8") as f:
-    f.write(f"# {name}\n")
-    f.write(description)
+    f.write(f"# {name}\n\n")
+    f.write(description + "\n")
 
 if setup_virtualenv:
     run(["pyenv", "install", python_version])
