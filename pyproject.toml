@@ -38,3 +38,6 @@
     [tool.ruff.format]
         indent-style = "space"
         quote-style  = "double"
+
+[tool.deptry.per_rule_ignores]
+    DEP003 = ["baseline"]

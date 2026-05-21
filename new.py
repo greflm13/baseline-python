@@ -41,6 +41,8 @@ pyproject["project"]["scripts"].add(name, f"{name.replace('-', '_')}.main:main")
 pyproject["tool"]["setuptools"]["package-data"] = tomlkit.table()
 pyproject["tool"]["setuptools"]["package-data"].add(name, tomlkit.array())
 pyproject["tool"]["ruff"]["target-version"] = f"py{python_version.replace('.', '')}"
+pyproject["tool"]["deptry"]["per_rule_ignores"] = tomlkit.table()
+pyproject["tool"]["deptry"]["per_rule_ignores"].add("DEP003", name.replace("-", "_"))
 
 with open(path, "w", encoding="utf-8") as f:
     f.write(tomlkit.dumps(pyproject))
