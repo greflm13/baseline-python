@@ -22,3 +22,9 @@ format:
 
 fix:
 	ruff check . --fix
+
+depcheck:
+	deptry .
+
+depwrite:
+	pipreqs --mode compat --force
