@@ -51,7 +51,11 @@ with open(os.path.join(name, "build.spec"), encoding="utf-8") as f:
     buildspec = f.read()
 
 with open(os.path.join(name, "build.spec"), "w", encoding="utf-8") as f:
-    f.write(buildspec.replace("src/baseline/main.py", f"src/{name}/main.py").replace("baseline.modules", f"{name}.modules"))
+    f.write(
+        buildspec.replace("src/baseline/main.py", f"src/{name.replace('-', '_')}/main.py").replace(
+            "baseline.modules", f"{name.replace('-', '_')}.modules"
+        )
+    )
 
 with open(os.path.join(name, f"{name}.code-workspace"), encoding="utf-8") as f:
     workspace = json.loads(f.read())
